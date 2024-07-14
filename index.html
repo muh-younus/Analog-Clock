@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+
+    <style>
+
+        body{
+
+            display: grid;
+            place-content: center;
+            height: 100vh;
+            background-image:url(https://cdn.pixabay.com/photo/2021/01/25/22/51/bricks-5949896_640.png);
+
+        }
+
+        .clock{
+
+            
+            width: 350px;
+            height: 350px;
+            position: relative;
+            border: 4px dotted black;
+            border-radius: 50%;
+            background-image:url(https://thumbs.dreamstime.com/b/black-blank-clock-roman-numerals-isolated-white-web-design-162207991.jpg);
+            background-size:cover;
+            
+            
+
+        }
+
+        .hand{
+
+            height: 100px;
+            width: 2px;
+            background-color: black;
+            position: absolute;
+            inset:0;
+            margin: auto;
+            transform-origin: bottom;
+            bottom:29%;
+        }
+
+        .hour-hand{
+            transform: rotate(27deg);
+            height: 80px;
+            bottom:22%;
+
+           
+        }
+        .minute-hand{
+            transform:rotate(40deg);
+            height: 95px;
+            bottom:26.5%;
+
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+    </div>
+
+
+    <script>
+
+        let hour = document.querySelector(".hour-hand");
+        let second = document.querySelector(".second-hand");
+        let minute = document.querySelector(".minute-hand");
+        let seconds = 0;
+        let minutes = 40;
+        let hours = 27;
+
+        setInterval(()=>{
+
+            //360/60s =6deg
+        second.style.transform = `rotate(${seconds+=6}deg)`;
+
+        if(seconds%360 === 0){
+
+            minute.style.transform = `rotate(${minutes+=6}deg)`;
+        }
+         else if(minutes%360 === 0){
+
+            hour.style.transform = `rotate(${hours+=30}deg)`;
+        }
+        },1000);
+    </script>
+    
+</body>
+</html>
